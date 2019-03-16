@@ -1,3 +1,5 @@
-from .Server import *
-from .Parser import *
-from .Client import *
+from .client import *
+from .parser import *
+from .server import *
+
+server = Server()
