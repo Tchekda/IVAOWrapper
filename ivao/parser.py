@@ -1,3 +1,5 @@
+import requests
+
 from .atc import Controller
 from .client import Client
 from .pilot import Pilot
@@ -6,8 +8,8 @@ from .pilot import Pilot
 class Parser:
 
     def __init__(self):
-        with open('whazzup.3.txt') as file:
-            self.content = file.read()
+        request = requests.get("http://api.ivao.aero/getdata/whazzup/whazzup.txt")
+        self.content = str(request.text)
         self.clients = self.content.split('!CLIENTS\n')[1].split('!AIRPORTS')[0].split('\n')[:-1]
 
     def get_raw_data(self):
@@ -45,9 +47,9 @@ class Parser:
                              fpl_remark=data[29], route=data[30], flight_type=data[43], passengers=data[44],
                              heading=data[45], ground=data[46], simulator=data[47])
                 pilot.append(user)
-            else:
+            else:  # Follow Me
                 user = Client(callsign=data[0], vid=data[1], latitude=data[5], longitude=data[6], altitude=data[7],
-                              server=data[14], connection_time=data[35], soft_name=data[38], soft_version=data[39],
+                              server=data[14], connection_time=data[37], soft_name=data[38], soft_version=data[39],
                               admin_rating=data[40], client_rating=data[41], client_type=data[3])
                 folme.append(user)
         return {'folme': folme, "atc": atc, "pilot": pilot}
