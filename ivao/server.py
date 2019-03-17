@@ -27,14 +27,14 @@ class Server:
 
     def update_data(self):
         parser = Parser()
-        for client in parser.get_clients_object():
-            if client.vid not in Server.clients:
-                self.call('newClient', client)
+        data = parser.get_clients_object()
+        for client in data['atc']:
+            Server.controllers[client.vid] = client
             Server.clients[client.vid] = client
-            if client.client_type == "ATC":
-                Server.controllers[client.vid] = client
-            elif client.client_type == "PILOT":
-                Server.pilots[client.vid] = client
-            else:
-                Server.folme[client.vid] = client
+        for client in data['pilot']:
+            Server.pilots[client.vid] = client
+            Server.clients[client.vid] = client
+        for client in data['folme']:
+            Server.folme[client.vid] = client
+            Server.clients[client.vid] = client
         self.call('updated')

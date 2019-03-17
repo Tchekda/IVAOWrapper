@@ -10,7 +10,10 @@ class Client:
         self.client_type = client_type
         self.latitude = latitude
         self.longitude = longitude
-        self.altitude = int(altitude)
+        if altitude != '':
+            self.altitude = int(altitude)
+        else:
+            self.altitude = 0
         self.server = server
         self.connection_time = datetime.datetime(year=int(connection_time[:4]), month=int(connection_time[4:6]),
                                                  day=int(connection_time[6:8]), hour=int(connection_time[8:10]),
@@ -21,4 +24,18 @@ class Client:
         self.client_rating = int(client_rating)
 
     def __str__(self):
-        return "{0} as {1} with {2} callsign".format(self.vid, self.client_type, self.callsign)
+        return "{} : {}({}) as {} on {} since {}.".format( self.get_admin_rating_name(), self.callsign, self.vid, self.client_type, self.server,
+                                                             self.connection_time)
+
+    def get_admin_rating_name(self):
+        """
+        Get the name of the rank of the client on the network
+        :return: str
+        """
+        return {
+            0: "Suspended",
+            1: "Observer",
+            2: "User",
+            11: "Supervisor",
+            12: "Administrator",
+        }.get(self.admin_rating, None)
