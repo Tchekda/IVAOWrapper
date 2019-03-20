@@ -1,14 +1,19 @@
+import random
+import threading
+import time
+
 from .parser import Parser
 
 
 class Server:
-    clients = {}
-    controllers = {}
-    pilots = {}
-    folme = {}
 
     def __init__(self):
         self.handlers = {}
+        self.clients = {}
+        self.controllers = {}
+        self.pilots = {}
+        self.folme = {}
+        self.update_stream = threading.currentThread()
 
     def call(self, type, *args):
         if type in self.handlers:
@@ -29,12 +34,20 @@ class Server:
         parser = Parser()
         data = parser.get_clients_object()
         for client in data['atc']:
-            Server.controllers[client.vid] = client
-            Server.clients[client.vid] = client
+            self.controllers[client.vid] = client
+            self.clients[client.vid] = client
         for client in data['pilot']:
-            Server.pilots[client.vid] = client
-            Server.clients[client.vid] = client
+            self.pilots[client.vid] = client
+            self.clients[client.vid] = client
         for client in data['folme']:
-            Server.folme[client.vid] = client
-            Server.clients[client.vid] = client
+            self.folme[client.vid] = client
+            self.clients[client.vid] = client
         self.call('updated')
+
+    def stop_update_stream(self):
+        self.update_stream.do_run = False
+
+    def run_update_stream(self):
+        while getattr(self.update_stream, "do_run", True):
+            self.update_data()
+            time.sleep(random.randint(1, 3) * 60)
