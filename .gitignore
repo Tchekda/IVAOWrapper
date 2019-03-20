@@ -103,12 +103,10 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-\.idea/
+.idea/
 
-dummy\.txt
+dummy.txt
 
-run\.py
+run.py
 
-whazzup\.1\.txt
-
-whazzup\.2\.txt
+whazzup.*
