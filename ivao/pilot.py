@@ -19,7 +19,7 @@ class Pilot(Client):
         :param soft_name: Name of the software used by the client
         :param soft_version: Version of the software used by the client
         :param admin_rating: Administrative rating
-        :param client_rating: ATC rank
+        :param client_rating: Pilot rank
         :param groundspeed: The groundspeed of the pilot.
         :param aircraft: 	According to ICAO flightplan specifications. (1/C172/L-CS/C)
         :param cruise_speed: According to ICAO flightplan specifications.

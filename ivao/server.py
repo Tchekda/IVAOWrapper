@@ -30,9 +30,10 @@ class Server:
 
         return registerhandler
 
-    def update_data(self):
-        parser = Parser()
-        data = parser.get_clients_object()
+    def update_data(self, data=None):
+        if not data:
+            parser = Parser()
+            data = parser.get_clients_object()
         for client in data['atc']:
             if client.vid in self.controllers and self.controllers[client.vid].atis_time != client.atis_time:
                 self.call("atis_update", client)
@@ -49,7 +50,7 @@ class Server:
         for client in data['folme']:
             self.folme[client.vid] = client
             self.clients[client.vid] = client
-        self.call('updated', self.clients)
+        self.call('update', self.clients)
 
     def stop_update_stream(self):
         self.update_stream.do_run = False
