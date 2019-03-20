@@ -45,7 +45,10 @@ class Pilot(Client):
                          client_rating=client_rating)
         self.destination_airport = destination_airport
         self.simulator = int(simulator)
-        self.ground = bool(ground)
+        if ground == "1":
+            self.ground = True
+        else:
+            self.ground = False
         self.heading = int(heading)
         if passengers != '':
             self.passengers = int(passengers)
