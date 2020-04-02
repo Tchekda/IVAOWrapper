@@ -1,5 +1,4 @@
 import requests
-import os
 from .atc import Controller
 from .client import Client
 from .pilot import Pilot

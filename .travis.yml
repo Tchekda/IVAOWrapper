@@ -1,15 +1,31 @@
 language: python
 python:
-  - "3.6"
-  - "3.7"
-  - "3.8"
+- '3.6'
+- '3.7'
+- '3.8'
 cache: pip
 install:
-  - pip install -r requirements.txt
+- pip install -r requirements.txt
 script: python -m unittest
+deploy:
+  - provider: pypi
+    user: __token__
+    skip_existing: true
+    on:
+      branch: master
+    password:
+      secure: qJ8G+rav4258Oxal393XAHIeEyIUNZmCt1YSxExsXCbzqrhkbCzZbveumAVwLlpVwBscs7omW/lEiPbQzOeiknVK/p8WQkKsx9+JbdPfDHwi2M8wjg0zH/EiaNyg7nOLyW2/8dejjW1K7z+DhYx54NaZNkk6TIQF/4bryGTX4aBPiY2Lnl6HysJds4sJfZ20ETjWUB1cPj9Ah81QaSRVKd23HiTHrsX+pVsAKxqTk7A1gQbpNs59b5u++e6NP3drDyDvb2MvOHmAL3JmRgaiyqkZm7vCQVi/D0eSI70qDc74JDwspubHqPHmHayiO+kzMHZ01ntLx+TJGG8Onbp4B+cBgq3pAhVURWfBFQkjgLuFufAzfPZr+3UeWcQLOZXxun40GlZ+jBiYZHAcQjqAjoykysF3a15q1+PuiL6UzZUMVCHj+z5AOE6Ww01BMA3csw1Cx+YHS4lUwFDMTWOPgaQl2B3+rZV+umQuk7ohWgiIECMfi3jXV18FPKxfeM2KMwZdXPFhXKIjbu4JI/+Vdcz8SAeEjfeqbxidAv3XwHrbGKTELEraXMIgEQFlSDSZ1vJrZsk+AuuRj8nZc/tGd4/563m+DsmlkQACs3YDeuMiS517+ffG5NWAj9B9jcfpf6bbPbYZClmfqP342HKaHw7qgT/ySNXg2KTFinaa7yE=
+  - provider: pypi
+    user: __token__
+    skip_existing: true
+    on:
+      branch: dev
+    server: https://test.pypi.org/legacy/
+    password:
+      secure: ekItf/4D++agUblgn914Bpp1zU3L0Gw0BGZCPa9iCWWyYkb4a63Lcoblg6x3sXZtM4QlgAjgbnwY18rKFkHTG1AFO3PZhqoYg2iUPiznbpLD6wbr4Xbie8RKIqR/KMm6j6L7pL6fPWZQrVQ3yapkbcJdIKT+fh6CQsMHCbWm9s9LceO+/gjh4ORr1WgzC3zTOYVpM/XxyFBJsfLoefdhc+/Gl7qEChjFROYDY6m2AxKkjBkH2Db2svmQm8YbQg2nLR63x2Ut5qshqiPF4vXQsUaSjW9gZy5RMQewKnF8ML7Ee8IicapvFxWxrv3tRWd8uUb33yC9VaPmPOXVbkwcYHOTnbsKgwShHSQqdzwvQAiBkLcZwmWqqgJZ7UZF7Soy3XXKCRmL9Yg+uNFW9+8tUZNwnGBEA1X+0aqgf+iWkL9EHlEtND8ld5XAqFoCNcumIaGiXji+7uZCdpn8QqxU4LOLCa4En2NwHvb2Tb0ftHKBN+flxJiBV+ODU5aYWH5b2w+iEbCh0yCkKbS+RGKKbw8xVH6EHwS4UQFqhWDEQw2KMBdHmk1pVGzmaJoYwd3xIeIeuhUwA3/+YmOsBNf21RiO2ML0PLVxamo4IFAgdm4zS7py6jT6d2pXO3daXpxGaoFHNquP/ZmPIhd3lTemigEGM80G1JSRCrAOKGHhFNo=
 notifications:
   email:
     recipients:
-      - contact@tchekda.fr
-    on_success: never # default: change
-    on_failure: always # default: always
+    - contact@tchekda.fr
+    on_success: never
+    on_failure: always

@@ -49,10 +49,13 @@ class Server:
         if not data:
             parser = Parser()
             data = parser.get_clients_object()
+        first_run = True if len(self.clients) == 0 else False
         for client in data['atc']:
             if client.vid in self.controllers:  # If client was connected at previous update
                 if self.controllers[client.vid].atis_time != client.atis_time:
                     self.call("atis_update", client)
+            else:  # Client connected since last update
+                self.call("connect", client, first_run)
             self.controllers[client.vid] = client
             self.clients[client.vid] = client
         for client in data['pilot']:
@@ -68,14 +71,37 @@ class Server:
                     self.call("static", client)
                 else:
                     self.call("moving", client)
-
+            else:  # Client connected since last update
+                self.call("connect", client, first_run)
             self.pilots[client.vid] = client
             self.clients[client.vid] = client
         for client in data['folme']:
             if client.vid in self.folme:  # If client was connected at previous update
                 pass
+            else:  # Client connected since last update
+                self.call("connect", client, first_run)
             self.folme[client.vid] = client
             self.clients[client.vid] = client
+        disconnects = []
+        for vid in self.clients:
+            still_connected = False
+            for client in data['atc']:
+                if client.vid == vid:
+                    still_connected = True
+                    break
+            for client in data['pilot']:
+                if client.vid == vid:
+                    still_connected = True
+                    break
+            for client in data['folme']:
+                if client.vid == vid:
+                    still_connected = True
+                    break
+            if not still_connected:
+                self.call("disconnect", self.clients[vid])
+        for vid in disconnects:
+            self.clients.pop(vid)
+
         self.call('update', self.clients)
 
     def stop_update_stream(self):
