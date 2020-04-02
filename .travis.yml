@@ -6,7 +6,6 @@ python:
 cache: pip
 install:
   - pip install -r requirements.txt
-script: python -m unittest
 deploy:
    -  provider: pypi
       user: "__token__"
@@ -15,7 +14,7 @@ deploy:
       on:
         branch: master
    -  provider: pypi
-      server: https://test.pypi.org/legacy
+      server: https://test.pypi.org/legacy/
       user: "__token__"
       password:
         secure: "MX36WEARzQipU8kI9wnOVMhrKRb7RPE+BMF3uC4Cgbja6HSyG5FVL1kaoRngM+5oShDMEXqzAhSUkBhz1LGgz8CJZwNdn4sBPCUbX+Doixpq7ja14CgPp5w8YPEhSD2GG0a2WLnwgwYyXmyZngNc5pDvIr7F4qpX/qOiDmxFUiMpBd6wPzrorEo2pnjrP1dT1S0Hi85n+VffV1lpsWXLqHccmHrZPow3OUjJCIAupPZ2UDT1vgvWXlw7LR9g/So7ydi9Tze2Yz0pHXBlFs2MMzb6GjGJvUkytYxqBQqgtLFhE3JnCZGEmGsSCi71gBn+dqsGN74ZlQeJUYroJo2KJ68vL3p+dm49N4kqaCg36pWNG9SediZoYi2DIm6+K1Rw6JzUn7iRDgit1OS7ls1rbHhu2H5ZCGiUAVsV2N2nPUp+mk7UiDsAmtLrFzYOoVs2ByyhNpJwbJkFAzYM6I3q9gV/tWo2BG9A547DS+SbXtMaNXUJzWRO3dlrG/tVMkh+PLiHzVB72sth0PStftpbHK63ohq2Og3iv6/qqbWpUtfW966b+kCI/zUdR3LO3EoBZ9mHm9N8wgKQ15Zy0aEnNr+boXpFyH7l/kfg9qJR6fn94Ae9TZ1oePtdw5eNoc6K5NSOkaWpK/wRPDw7s9402Gza3blNkHit6ZO8ZSpTnpw="
