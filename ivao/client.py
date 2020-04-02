@@ -5,6 +5,21 @@ class Client:
 
     def __init__(self, callsign, vid, client_type, latitude, longitude, altitude, server, connection_time, soft_name,
                  soft_version, admin_rating, client_rating):
+        """
+        Create a client connection object
+        :param callsign: User's Callsign
+        :param vid: User's VID
+        :param client_type: PILOT, ATC or FOLLOW ME
+        :param latitude: User's Latitude coordinates
+        :param longitude: User's Longitude coordinates
+        :param altitude: User's Altitude
+        :param server: Server where the client is connected
+        :param connection_time: Time when Client connected
+        :param soft_name:  User's software name
+        :param soft_version:  User's software version
+        :param admin_rating:  User's Staff Rank
+        :param client_rating:  User's Type Rank
+        """
         self.callsign = callsign
         self.vid = int(vid)
         self.client_type = client_type

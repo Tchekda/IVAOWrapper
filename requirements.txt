@@ -1,1 +1,3 @@
-requests==2.21.0
+requests
+pdoc3
+

@@ -96,7 +96,8 @@ class Pilot(Client):
             17: "X-Plane 12",  # Really???
             20: "Fly!",
             21: "Fly! 2",
-            25: "Prepar3D"
+            25: "Prepar3D",
+            30: "Prepar3D 1.x"
         }.get(self.simulator, 'Unknown')
 
     def get_client_rating_name(self):
