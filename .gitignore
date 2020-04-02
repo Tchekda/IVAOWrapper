@@ -2,9 +2,8 @@ venv/
 .idea/
 dist/
 build/
-tests/
 dummy.txt
 whazzup.txt
 .pypi
-ivao/__pycache__/
+*/__pycache__/
 IVAOWrapper.egg-info

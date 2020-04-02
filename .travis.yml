@@ -6,11 +6,8 @@ python:
 cache: pip
 install:
 - pip install -r requirements.txt
-- pip install travis-sphinx
 script:
-  - travis-sphinx build
-after_success:
-    - travis-sphinx deploy
+  - pdoc --html ivao
 deploy:
   - provider: pypi
     user: __token__
@@ -27,6 +24,12 @@ deploy:
     server: https://test.pypi.org/legacy/
     password:
       secure: ekItf/4D++agUblgn914Bpp1zU3L0Gw0BGZCPa9iCWWyYkb4a63Lcoblg6x3sXZtM4QlgAjgbnwY18rKFkHTG1AFO3PZhqoYg2iUPiznbpLD6wbr4Xbie8RKIqR/KMm6j6L7pL6fPWZQrVQ3yapkbcJdIKT+fh6CQsMHCbWm9s9LceO+/gjh4ORr1WgzC3zTOYVpM/XxyFBJsfLoefdhc+/Gl7qEChjFROYDY6m2AxKkjBkH2Db2svmQm8YbQg2nLR63x2Ut5qshqiPF4vXQsUaSjW9gZy5RMQewKnF8ML7Ee8IicapvFxWxrv3tRWd8uUb33yC9VaPmPOXVbkwcYHOTnbsKgwShHSQqdzwvQAiBkLcZwmWqqgJZ7UZF7Soy3XXKCRmL9Yg+uNFW9+8tUZNwnGBEA1X+0aqgf+iWkL9EHlEtND8ld5XAqFoCNcumIaGiXji+7uZCdpn8QqxU4LOLCa4En2NwHvb2Tb0ftHKBN+flxJiBV+ODU5aYWH5b2w+iEbCh0yCkKbS+RGKKbw8xVH6EHwS4UQFqhWDEQw2KMBdHmk1pVGzmaJoYwd3xIeIeuhUwA3/+YmOsBNf21RiO2ML0PLVxamo4IFAgdm4zS7py6jT6d2pXO3daXpxGaoFHNquP/ZmPIhd3lTemigEGM80G1JSRCrAOKGHhFNo=
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GH_TOKEN
+    local_dir: html/ivao
+    keep_history: true
+    verbose: true
 notifications:
   email:
     recipients:
