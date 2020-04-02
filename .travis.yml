@@ -30,6 +30,9 @@ deploy:
     local_dir: html/ivao
     keep_history: true
     verbose: true
+    on:
+      all_branches: true
+      condition: $TRAVIS_BRANCH =~ ^(dev|master)$
 notifications:
   email:
     recipients:
