@@ -20,5 +20,6 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
     install_requires=['requests'],
-
+    test_suite='nose.collector',
+    tests_require=['nose'],
 )
