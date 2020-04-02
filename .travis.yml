@@ -7,20 +7,6 @@ cache: pip
 install:
   - pip install -r requirements.txt
 script: python -m unittest
-deploy:
-   -  provider: pypi
-      user: "__token__"
-      password:
-        secure: "h/0rNVT9kXykMLvRGlglE1qlVxfUAJA75y4uDytmHfnh8ZPfl14XHROF6Iw10jkRHRndJmXPoOR/3C4v9AQtqoZJUxtncl5TkDMIDHkXyL1Cy18Clwea0aoN8WqNJQrP6HL5QYqme60lnGpZ5793ayiO1j6pVlpRL+I1ucU2CDONU7xiVgUbo0kX25e3WgvS2ktjBg96me6R0eOExwznPCqgXpJ5tPlmqGYOuHhDnoa3EPmyboLp3EscxAG+UUyVxBhWIlIr95vAuwiNuLVxUS7JSS924rVoimsQoJwbOpGgB40AQx9Pe8sADNCO9rbVFJz4UIsV7G9pr402OoGwdwohCZH5yB5ccAAPSd6HBXzC7Hh+Rwsl8lN1aufXLbghNtCrRY1QpmcDDz+51SlewxlzNeeRshgPMujzS8ivH1WhDorKZzmKlJhfAYZZeP2q02fECid55zQYUF/6ktghshIXamURWoFa6FSELZLHErIpELGTnPZE4rf0sGKySVHjWeDLrhJ17l3wcYz2VXBB7uPrc/ZicsH0+b3rKS8SqNKQ68EHulZeSLlHbUdktaty2+hAa40QA9Ba7wEWQZLTT9udHycJpJMsipwZx1+zhSmS1XyKYg6qPvHXT2UN25MUjVYfk7Uwo6WqPc5gl2RUR0Wrq2kbLe11He3JMVGKXok="
-      on:
-        branch: master
-   -  provider: pypi
-      server: https://test.pypi.org/legacy/
-      user: "__token__"
-      password:
-        secure: "MX36WEARzQipU8kI9wnOVMhrKRb7RPE+BMF3uC4Cgbja6HSyG5FVL1kaoRngM+5oShDMEXqzAhSUkBhz1LGgz8CJZwNdn4sBPCUbX+Doixpq7ja14CgPp5w8YPEhSD2GG0a2WLnwgwYyXmyZngNc5pDvIr7F4qpX/qOiDmxFUiMpBd6wPzrorEo2pnjrP1dT1S0Hi85n+VffV1lpsWXLqHccmHrZPow3OUjJCIAupPZ2UDT1vgvWXlw7LR9g/So7ydi9Tze2Yz0pHXBlFs2MMzb6GjGJvUkytYxqBQqgtLFhE3JnCZGEmGsSCi71gBn+dqsGN74ZlQeJUYroJo2KJ68vL3p+dm49N4kqaCg36pWNG9SediZoYi2DIm6+K1Rw6JzUn7iRDgit1OS7ls1rbHhu2H5ZCGiUAVsV2N2nPUp+mk7UiDsAmtLrFzYOoVs2ByyhNpJwbJkFAzYM6I3q9gV/tWo2BG9A547DS+SbXtMaNXUJzWRO3dlrG/tVMkh+PLiHzVB72sth0PStftpbHK63ohq2Og3iv6/qqbWpUtfW966b+kCI/zUdR3LO3EoBZ9mHm9N8wgKQ15Zy0aEnNr+boXpFyH7l/kfg9qJR6fn94Ae9TZ1oePtdw5eNoc6K5NSOkaWpK/wRPDw7s9402Gza3blNkHit6ZO8ZSpTnpw="
-      on:
-        branch: dev
 notifications:
   email:
     recipients:
