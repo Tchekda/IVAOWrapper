@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="IVAOWrapper",
-    version="0.0.1",
+    version="0.1.0",
     author="Tchekda",
     author_email="contact@tchekda.fr",
-    description="Light Python Wrapper for IVAO Network",
+    description="Light Python 3 Wrapper for IVAO Network",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Tchekda/IVAOWrapper",
@@ -17,6 +17,7 @@ setuptools.setup(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
+
     ],
     python_requires='>=3.6',
     install_requires=['requests'],

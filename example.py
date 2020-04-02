@@ -25,7 +25,7 @@ def get_data(clients):
         elif client.client_type == "":
             count['atc'] += 1
 
-    print("{} on ground and {} in air for {} pilots".format(ground, air, pilots))
+    print("{} pilots ({} ground / {} air) - {} ATC - {} Follow Me".format(count['pilots'], count['ground'], count['air'], count['atc'], count['folme']))
 
 
 @server.event("land")
