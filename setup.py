@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="IVAOWrapper",
-    version="0.1.1",
+    version="0.1.2",
     author="Tchekda",
     author_email="contact@tchekda.fr",
     description="Light Python 3 Wrapper for IVAO Network",
@@ -16,7 +16,7 @@ setuptools.setup(
         "Documentation": "https://tchekda.github.io/IVAOWrapper",
         "Source Code": "https://github.com/Tchekda/IVAOWrapper",
     },
-    packages=setuptools.find_namespace_packages(include=["ivao.*"]),
+    packages=setuptools.find_namespace_packages(include=["ivao"]),
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.4",
