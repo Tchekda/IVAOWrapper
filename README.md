@@ -26,6 +26,8 @@ server.run_update_stream(delay=4)
 You are free to open an issue if you have a problem, and welcome to make a PR to improve the wrapper
 
 Tested with some versions of Python, might work with newer ones.
+ 
+Tests with Python 3.4 aren't working but modulte should work
 ### Dev Requirements
  - `requests` to grab whazzup file
  - `pdoc3` to generate html documentation
