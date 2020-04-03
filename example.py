@@ -1,4 +1,4 @@
-from ivao import Server
+from ivao import Server, Client, Controller, Pilot
 
 server = Server()
 
@@ -29,32 +29,32 @@ def get_data(clients):
 
 
 @server.event("land")
-def land(client):
+def land(client: Pilot):
     print(client, " has land")
 
 
 @server.event("static")
-def static(client):
+def static(client: Pilot):
     print(client, " is static on " + ("ground" if client.ground else "air"))
 
 
 @server.event("moving")
-def moving(client):
+def moving(client: Pilot):
     print(client, " is moving on " + ("ground" if client.ground else "air"))
 
 
 @server.event("takeoff")
-def land(client):
+def land(client: Pilot):
     print(client, " has takeoff")
 
 
 @server.event("atis_update")
-def atis(client):
+def atis(client: Controller):
    print(client, " has changed his ATIS")
 
 
 @server.event("connect")
-def connect(client, first_run):
+def connect(client: Client, first_run: bool):
     if first_run:
         pass
     else:
@@ -62,7 +62,7 @@ def connect(client, first_run):
 
 
 @server.event("disconnect")
-def disconnect(client):
+def disconnect(client: Client):
     print(client, " just disconnected")
 
 
