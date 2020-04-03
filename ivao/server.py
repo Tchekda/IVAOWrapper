@@ -99,8 +99,9 @@ class Server:
                     break
             if not still_connected:
                 self.call("disconnect", self.clients[vid])
+                disconnects.append(vid)
         for vid in disconnects:
-            self.clients.pop(vid)
+            del self.clients[vid]
 
         self.call('update', self.clients)
 
