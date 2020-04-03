@@ -31,7 +31,6 @@ deploy:
     skip_cleanup: true
     github_token: "$GH_TOKEN"
     local_dir: html/ivao
-    keep_history: true
     verbose: true
     on:
       all_branches: true
