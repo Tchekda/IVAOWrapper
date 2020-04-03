@@ -1,5 +1,6 @@
 language: python
 python:
+- '3.5'
 - '3.6'
 - '3.7'
 - '3.8'
@@ -7,7 +8,8 @@ cache: pip
 install:
 - pip install -r requirements.txt
 script:
-  - pdoc --html ivao
+  - python -m unittest
+  - pdoc --html ivao --force
 deploy:
   - provider: pypi
     user: __token__
@@ -28,7 +30,6 @@ deploy:
     skip_cleanup: true
     github_token: "$GH_TOKEN"
     local_dir: html/ivao
-    keep_history: true
     verbose: true
     on:
       all_branches: true
