@@ -99,6 +99,12 @@ class Server:
                     break
             if not still_connected:
                 self.call("disconnect", self.clients[vid])
+                if vid in self.pilots:
+                    del self.pilots[vid]
+                elif vid in self.controllers:
+                    del self.controllers[vid]
+                elif vid in self.folme:
+                    del self.folme[vid]
                 disconnects.append(vid)
         for vid in disconnects:
             del self.clients[vid]
