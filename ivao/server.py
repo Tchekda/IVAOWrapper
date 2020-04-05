@@ -70,6 +70,13 @@ class Server:
                         and self.pilots[client.vid].altitude == client.altitude:
                     self.call("static", client)
                 else:
+                    if self.pilots[client.vid].altitude != client.altitude:
+                        if self.pilots[client.vid].altitude > client.altitude + 1000:
+                            self.call("descent", client)
+                        elif self.pilots[client.vid].altitude < client.altitude - 1000:
+                            self.call("climb", client)
+                        else:
+                            self.call("cruise", client)
                     self.call("moving", client)
             else:  # Client connected since last update
                 self.call("connect", client, first_run)
@@ -127,4 +134,4 @@ class Server:
             if delay:
                 time.sleep(delay * 60)
             else:
-                time.sleep(random.randint(1, 3) * 60)
+                time.sleep(random.randint(3, 5) * 60)

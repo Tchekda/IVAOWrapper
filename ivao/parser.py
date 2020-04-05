@@ -1,4 +1,5 @@
 import requests
+import os
 from .atc import Controller
 from .client import Client
 from .pilot import Pilot
@@ -10,7 +11,11 @@ class Parser:
         """
         Getting latest whazzup file, and selecting only clients
         """
-        request = requests.get("http://api.ivao.aero/getdata/whazzup/whazzup.txt")
+        if os.getenv("WHAZZUP_KEY") is not None:
+            url = "http://api.ivao.aero/getdata/whazzup/?key=" + os.getenv("WHAZZUP_KEY")
+        else:
+            url = "http://api.ivao.aero/getdata/whazzup/whazzup.txt"
+        request = requests.get(url)
         self.content = str(request.text)
         self.clients = self.content.split('!CLIENTS\n')[1].split('!AIRPORTS')[0].split('\n')[:-1]
 
